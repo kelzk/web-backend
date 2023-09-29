@@ -1,0 +1,23 @@
+bracketSameLine: false
+importOrder:
+  - "^@.*$"
+  - "^[a-z].*$"
+  - '^\.\.?/.*(\.js)?$'
+  - '^\.\.?/.*\.json$'
+importOrderSeparation: true
+importOrderSortSpecifiers: true
+jsonRecursiveSort: true
+overrides:
+  - files:
+      - "*.yml"
+      - "*.yaml"
+    options:
+      bracketSpacing: false
+      printWidth: 10000
+plugins:
+  - "prettier-plugin-sort-json"
+  - "prettier-plugin-packagejson"
+semi: true
+singleQuote: true
+tabWidth: 2
+trailingComma: "es5"

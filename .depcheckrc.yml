@@ -1,0 +1,7 @@
+ignores:
+  - "@babel/*"
+  - "@*/prettier-plugin-*"
+  - "prettier-plugin-*"
+  - "eslint-config-*"
+  - "eslint-plugin-*"
+  - "pre-commit"

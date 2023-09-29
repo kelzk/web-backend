@@ -1,0 +1,22 @@
+env:
+  browser: true
+  es2021: true
+  node: true
+extends:
+  - airbnb-base
+  - plugin:import/recommended
+  - plugin:promise/recommended
+  - prettier
+ignorePatterns:
+  - node_modules/**/*
+parserOptions:
+  ecmaVersion: latest
+  sourceType: module
+rules:
+  import/extensions: "off"
+  import/prefer-default-export: "off"
+  no-console: "off"
+root: true
+plugins:
+  - json
+  - promise
