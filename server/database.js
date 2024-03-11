@@ -1,10 +1,10 @@
-import dotenv from "dotenv"
-import { MongoClient, ServerApiVersion } from 'mongodb';
+import dotenv from "dotenv";
+import { MongoClient, ServerApiVersion } from "mongodb";
 
 dotenv.config();
 
-const USERNAME = process.env.USERNAME
-const PASSWORD = process.env.PASSWORD
+const USERNAME = process.env.MONGO_USERNAME;
+const PASSWORD = process.env.MONGO_PASSWORD;
 
 const uri = `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.dk0mzng.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
@@ -14,7 +14,7 @@ const client = new MongoClient(uri, {
     version: ServerApiVersion.v1,
     strict: true,
     deprecationErrors: true,
-  }
+  },
 });
 
-export {client}
+export { client };

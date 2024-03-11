@@ -1,8 +1,11 @@
-const read = async (app, client) => {
+const read = async (client) => {
+  await client.connect();
+  const db = client.db("RNA-virus");
+  const collection = db.collection("properties");
+  const findResult = collection.find();
+  const result = await findResult.toArray();
+  client.close();
+  return result;
+};
 
-  app.get('/', (req, res) => {
-      res.send('Hello, World!');
-    });
-}
-
-export {read}
+export { read };
