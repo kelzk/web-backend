@@ -4,7 +4,6 @@ const read = async (client) => {
   const collection = db.collection("properties");
   const findResult = collection.find();
   const result = await findResult.toArray();
-  client.close();
   return result;
 };
 

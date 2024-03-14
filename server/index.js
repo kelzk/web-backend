@@ -1,9 +1,12 @@
 import express from "express";
+import cors from "cors";
 import { read } from "./routes/read.js";
 import { client } from "./database.js";
 
 const app = express();
 const port = 3000;
+
+app.use(cors({ origin: "http://localhost:3001" }));
 
 app.get("/", async (req, res) => {
   const result = await read(client);
