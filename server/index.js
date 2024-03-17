@@ -1,22 +1,12 @@
 import express from "express";
 import cors from "cors";
-import { read, filter, readTotalNum, findOne } from "./routes/read.js";
+import { filter, readTotalNum, findOne } from "./routes/read.js";
 import { client } from "./database.js";
 
 const app = express();
 const port = 3000;
 
 app.use(cors({ origin: "http://localhost:3001" }));
-
-app.get("/", async (req, res) => {
-  try {
-    const result = await read(client);
-    res.send(result);
-  } catch (error) {
-    console.error("Error querying the database:", error);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
 
 app.get("/filter", async (req, res) => {
   try {
