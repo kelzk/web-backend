@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors";
-import bodyParser from "body-parser";
 import { read, filter, readTotalNum, findOne } from "./routes/read.js";
 import { client } from "./database.js";
 
@@ -8,7 +7,6 @@ const app = express();
 const port = 3000;
 
 app.use(cors({ origin: "http://localhost:3001" }));
-app.use(bodyParser.json());
 
 app.get("/", async (req, res) => {
   try {
@@ -20,9 +18,9 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.post("/filter", async (req, res) => {
+app.get("/filter", async (req, res) => {
   try {
-    const result = await filter(client, req.body);
+    const result = await filter(client, req.query);
     res.send(result);
   } catch (error) {
     console.error("Error querying the database:", error);
@@ -30,9 +28,9 @@ app.post("/filter", async (req, res) => {
   }
 });
 
-app.post("/findOne", async (req, res) => {
+app.get("/findOne", async (req, res) => {
   try {
-    const result = await findOne(client, req.body);
+    const result = await findOne(client, req.query);
     res.send(result);
   } catch (error) {
     console.error("Error querying the database:", error);
