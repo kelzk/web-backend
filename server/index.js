@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { filter, readTotalNum, findOne } from "./routes/read.js";
+import { filter, readTotalNum, findOne, filterRowNum } from "./routes/read.js";
 import { client } from "./database.js";
 
 const app = express();
@@ -31,6 +31,16 @@ app.get("/findOne", async (req, res) => {
 app.get("/holdings", async (req, res) => {
   try {
     const result = await readTotalNum(client);
+    res.send(result.toString());
+  } catch (error) {
+    console.error("Error querying the database:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+app.get("/filterRowNum", async (req, res) => {
+  try {
+    const result = await filterRowNum(client, req.query);
     res.send(result.toString());
   } catch (error) {
     console.error("Error querying the database:", error);
