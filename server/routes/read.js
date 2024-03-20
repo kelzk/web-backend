@@ -52,7 +52,15 @@ const findOne = async (client, criteria) => {
   const collection = db.collection("properties-2");
   const findResult = collection.find(criteria);
   const result = await findResult.toArray();
-  return result;
+  const data = result[0];
+  if (data.numOfPseudoknots >= data.numOfPseudoKnots) {
+    delete data.numOfPseudoKnots;
+  }
+  if (data.numOfPseudoknots < data.numOfPseudoKnots) {
+    delete data.numOfPseudoknots;
+  }
+  const finalResult = [data];
+  return finalResult;
 };
 
 const filterRowNum = async (client, criteria) => {
