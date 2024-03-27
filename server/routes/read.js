@@ -1,7 +1,6 @@
 /* eslint-disable no-continue */
 /* eslint-disable no-restricted-syntax */
 const filter = async (client, criteria) => {
-  console.log(criteria);
   const query = {};
   for (const [key, value] of Object.entries(criteria)) {
     if (key === "nPerPage" || key === "page") {
@@ -22,7 +21,6 @@ const filter = async (client, criteria) => {
       };
     }
   }
-  console.log(query);
   const page = Number(criteria.page);
   const nPerPage = Number(criteria.nPerPage);
   await client.connect();
@@ -64,7 +62,6 @@ const findOne = async (client, criteria) => {
 };
 
 const filterRowNum = async (client, criteria) => {
-  console.log(criteria);
   const query = {};
   for (const [key, value] of Object.entries(criteria)) {
     if (key === "nPerPage" || key === "page") {
@@ -85,12 +82,10 @@ const filterRowNum = async (client, criteria) => {
       };
     }
   }
-  console.log(query);
   await client.connect();
   const db = client.db("RNA-virus");
   const collection = db.collection("properties-2");
   const totalNum = await collection.countDocuments(query);
-  console.log(totalNum);
   return totalNum;
 };
 
